@@ -135,6 +135,33 @@ video {
     margin-bottom: 1rem;
 }
 
+.phone-input-group {
+    display: flex;
+    gap: 10px;
+}
+
+.country-code {
+    position: relative;
+    width: 70px;
+}
+
+.country-code input {
+    padding-left: 20px;
+    width: 100%;
+}
+
+.country-code .prefix {
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-dark);
+}
+
+.phone-input-group input[type="tel"] {
+    flex: 1;
+}
+
 label {
     display: block;
     margin-bottom: 0.5rem;
