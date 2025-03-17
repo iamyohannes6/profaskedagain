@@ -38,9 +38,8 @@ if (countryCodeInput) {
     });
 }
 
-telegramForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
+// Handle form submission
+submitBtn.addEventListener('click', async () => {
     // Set loading state
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending...';

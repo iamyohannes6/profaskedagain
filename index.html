@@ -203,7 +203,7 @@
 
         <section id="contact" class="contact-form">
             <h2>Contact Us</h2>
-            <form id="telegramForm">
+            <form id="telegramForm" onsubmit="return false;">
                 <div class="form-group">
                     <label for="name">Your Name:</label>
                     <input type="text" id="name" name="name" required>
@@ -226,7 +226,7 @@
                     <label for="message">Message:</label>
                     <textarea id="message" name="message" required></textarea>
                 </div>
-                <button type="submit" class="submit-btn">Submit</button>
+                <button type="button" class="submit-btn">Submit</button>
             </form>
         </section>
 
