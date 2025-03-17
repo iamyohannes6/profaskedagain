@@ -1,7 +1,5 @@
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM fully loaded'); // Debug log
-
     // Mobile menu functionality
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const nav = document.querySelector('nav ul');
@@ -23,11 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Form submission to Telegram
     const telegramForm = document.getElementById('telegramForm');
-    console.log('Form found:', !!telegramForm); // Debug log
-
     const submitBtn = telegramForm ? telegramForm.querySelector('.submit-btn') : null;
-    console.log('Submit button found:', !!submitBtn); // Debug log
-
     const botToken = '7663253049:AAEL-4N2KQGkPDPx8iuS1GjBurZVXSBFKsY';
     const chatId = '-1002176032855';
 
@@ -50,11 +44,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Handle form submission
     if (submitBtn && telegramForm) {
-        console.log('Setting up submit button click handler'); // Debug log
-        
         submitBtn.addEventListener('click', async function(e) {
             e.preventDefault();
-            console.log('Submit button clicked'); // Debug log
 
             // Set loading state
             submitBtn.disabled = true;
@@ -68,8 +59,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 const phoneNumber = document.getElementById('phoneNumber')?.value?.trim() || 
                                   document.getElementById('phone')?.value?.trim() || '';
                 const message = document.getElementById('message')?.value?.trim() || '';
-
-                console.log('Form data:', { name, email, countryCode, phoneNumber, message }); // Debug log
 
                 if (!name || !email || !phoneNumber || !message) {
                     throw new Error('Please fill in all fields');
@@ -94,9 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
 📱 Phone: ${countryCode}${phoneNumber}
 💬 Message: ${message}
 
-From: Canadian Investment Solutions Landing Page`;
-
-                console.log('Sending to Telegram:', text); // Debug log
+From: CIS`;
 
                 const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
                     method: 'POST',
@@ -110,7 +97,6 @@ From: Canadian Investment Solutions Landing Page`;
                 });
 
                 const data = await response.json();
-                console.log('Telegram response:', data); // Debug log
 
                 if (data.ok) {
                     alert('Thank you for your submission! We will contact you soon.');
@@ -119,7 +105,6 @@ From: Canadian Investment Solutions Landing Page`;
                     throw new Error(data.description || 'Failed to send message');
                 }
             } catch (error) {
-                console.error('Error:', error);
                 alert(error.message || 'Sorry, there was an error submitting your form. Please try again later.');
             } finally {
                 // Always reset button state
@@ -127,7 +112,5 @@ From: Canadian Investment Solutions Landing Page`;
                 submitBtn.textContent = 'Submit';
             }
         });
-    } else {
-        console.error('Form or submit button not found in the DOM');
     }
 }); 
