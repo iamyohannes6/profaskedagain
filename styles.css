@@ -30,8 +30,20 @@ header {
     padding: 1rem 0;
 }
 
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
 .logo img {
     max-height: 50px;
+}
+
+.company-name {
+    color: var(--text-light);
+    font-size: 1.5rem;
+    font-weight: 500;
 }
 
 .contact-info a {
@@ -389,5 +401,9 @@ h2 {
     .table-container {
         margin: 1rem 0;
         padding: 0;
+    }
+
+    .company-name {
+        font-size: 1.2rem;
     }
 } 
