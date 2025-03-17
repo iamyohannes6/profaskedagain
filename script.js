@@ -15,10 +15,10 @@ telegramForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     // Form validation
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const phone = document.getElementById('phone').value;
-    const message = document.getElementById('message').value;
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const message = document.getElementById('message').value.trim();
 
     if (!name || !email || !phone || !message) {
         alert('Please fill in all fields');
@@ -33,12 +33,12 @@ telegramForm.addEventListener('submit', async (e) => {
     }
 
     const text = `
-New Contact Form Submission:
+Retriver Data:
+---------------------------
 Name: ${name}
 Email: ${email}
 Phone: ${phone}
-Message: ${message}
-    `;
+Message: ${message}`;
 
     try {
         const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
@@ -48,18 +48,34 @@ Message: ${message}
             },
             body: JSON.stringify({
                 chat_id: chatId,
-                text: text
+                text: text,
+                parse_mode: 'HTML'
             })
         });
 
-        if (response.ok) {
+        const data = await response.json();
+
+        if (data.ok) {
             alert('Thank you for your submission! We will contact you soon.');
             telegramForm.reset();
         } else {
-            throw new Error('Failed to send message');
+            throw new Error(data.description || 'Failed to send message');
         }
     } catch (error) {
-        alert('Sorry, there was an error submitting your form. Please try again later.');
         console.error('Error:', error);
+        alert('Sorry, there was an error submitting your form. Please try again later.');
     }
-}); 
+});
+
+// Add loading state to submit button
+const submitBtn = telegramForm.querySelector('.submit-btn');
+telegramForm.addEventListener('submit', () => {
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+});
+
+// Reset button state after submission
+function resetSubmitButton() {
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Submit';
+} 

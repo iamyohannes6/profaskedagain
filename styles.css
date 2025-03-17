@@ -20,30 +20,35 @@ body {
 header {
     background-color: var(--primary-blue);
     color: var(--text-light);
-    padding: 1rem 2rem;
+    padding: 0.5rem 2rem;
 }
 
 .header-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 0;
+    padding: 0.5rem 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
 }
 
 .logo-container {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
-.logo img {
-    max-height: 50px;
+.logo-container img {
+    height: 50px;
+    width: auto;
 }
 
 .company-name {
     color: var(--text-light);
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 500;
+    white-space: nowrap;
 }
 
 .contact-info a {
@@ -403,7 +408,13 @@ h2 {
         padding: 0;
     }
 
+    .logo-container {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+
     .company-name {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
 } 
