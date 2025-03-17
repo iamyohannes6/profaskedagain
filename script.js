@@ -18,7 +18,7 @@ document.addEventListener('keydown', (e) => {
 // Form submission to Telegram
 const telegramForm = document.getElementById('telegramForm');
 const botToken = '7663253049:AAEL-4N2KQGkPDPx8iuS1GjBurZVXSBFKsY';
-const chatId = '-4696086738';
+const chatId = '-1002176032855';
 const submitBtn = telegramForm.querySelector('.submit-btn');
 
 function isValidPhone(countryCode, phone) {
