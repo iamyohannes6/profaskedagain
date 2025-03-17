@@ -225,12 +225,35 @@ footer {
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.advantage-card img {
-    width: 64px;
-    height: 64px;
-    margin-bottom: 1rem;
+.advantage-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.advantage-card i {
+    font-size: 3rem;
+    color: var(--primary-blue);
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.advantage-card:hover i {
+    transform: scale(1.1);
+}
+
+.advantage-card h3 {
+    color: var(--primary-blue);
+    margin: 1rem 0;
+    font-size: 1.25rem;
+}
+
+.advantage-card p {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.5;
 }
 
 /* Comparison Tables */
